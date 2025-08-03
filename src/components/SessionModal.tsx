@@ -25,8 +25,8 @@ export function SessionModal({
     defaultValue = {},
     buttonText = "Submit",
     onSubmit,
-    method, // <-- Add this
-    endpoint, // <-- Add this
+    method,
+    endpoint,
 }: JsonModalProps) {
     const [data, setData] = useState(defaultValue);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -57,7 +57,6 @@ export function SessionModal({
                 level: "error",
                 text: `Error: ${getErrorMessage(e)}`,
             });
-            // Don't close modal on error so user can retry
         } finally {
             onOpenChange(false);
             setIsSubmitting(false);
@@ -90,18 +89,18 @@ export function SessionModal({
                                 <Badge variant="outline" className="font-mono">
                                     {method}
                                 </Badge>
-                                <code className="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded text-xs font-mono">
+                                <code className="bg-gray-100 dark:bg-gray-800 rounded text-xs font-mono">
                                     {endpoint}
                                 </code>
                             </div>
                         </div>
 
-                        <div className="mt-3 px-3 py-1 rounded text-xs">
+                        <p className="text-sm text-muted-foreground mt-4 px-1">
                             Request Payload:
-                        </div>
+                        </p>
                     </div>
 
-                    <div className="h-64 p-2 overflow-auto text-foreground rounded-lg">
+                    <div className="h-64 p-2 overflow-auto text-foreground rounded-lg scrollbar scrollbar-thin scrollbar-hover">
                         <JsonEditor
                             data={data}
                             setData={handleDataChange}

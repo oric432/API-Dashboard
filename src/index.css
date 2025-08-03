@@ -113,3 +113,43 @@
         @apply bg-background text-foreground;
     }
 }
+
+@layer utilities {
+    .scrollbar,
+    .scrollbar-thin {
+        scrollbar-width: thin;
+        scrollbar-color: var(--tw-scrollbar-thumb, #d1d5db) transparent;
+    }
+    .dark .scrollbar,
+    .dark .scrollbar-thin {
+        scrollbar-color: var(--tw-scrollbar-thumb-dark, #4b5563) transparent;
+    }
+
+    .scrollbar::-webkit-scrollbar,
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 0.25rem;
+        height: 0.25rem;
+    }
+
+    .scrollbar::-webkit-scrollbar-track,
+    .scrollbar-thin::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb,
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        background-color: var(--tw-scrollbar-thumb, #d1d5db); /* gray-300 */
+        border-radius: 0.25rem;
+    }
+    .dark .scrollbar::-webkit-scrollbar-thumb,
+    .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+        background-color: var(
+            --tw-scrollbar-thumb-dark,
+            #4b5563
+        ); /* gray-600 */
+    }
+}

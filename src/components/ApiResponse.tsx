@@ -6,6 +6,7 @@ import { Terminal, Server, Copy, RefreshCcw, Clock } from "lucide-react";
 import { Card } from "./ui/card";
 import { MetricsTab } from "./MetricsTab";
 import { TABS } from "@/constants";
+import clsx from "clsx";
 
 export function ApiResponse() {
     const { activeTab, setTab, outputLines, clearOutput } = useUiStore();
@@ -19,7 +20,13 @@ export function ApiResponse() {
     };
 
     return (
-        <Card className=" bg-white/60 backdrop-blur-sm dark:bg-gray-800/60 border-0 shadow-lg p-6 h-[112vh] flex flex-col">
+        <Card
+            className={clsx(
+                "flex flex-col h-full min-h-0", // 👈 stretch + allow shrink
+                "bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm",
+                "border-0 shadow-lg p-6"
+            )}
+        >
             <div className="mb-4">
                 <div className="flex items-center gap-2 text-lg font-semibold">
                     <Server className="w-5 h-5 text-primary" />
@@ -29,7 +36,6 @@ export function ApiResponse() {
                     Real-time system output and metrics
                 </p>
             </div>
-
             <div className="flex items-center justify-between border-b mb-2">
                 <Tabs
                     tabs={[...TABS]}
@@ -57,8 +63,7 @@ export function ApiResponse() {
                     </div>
                 )}
             </div>
-
-            <div className="flex-1 overflow-auto text-sm">
+            <div className="flex-1 min-h-0 overflow-y-auto scrollbar scrollbar-thin scrollbar-hover">
                 {activeTab === "output" && (
                     <div className="font-mono text-xs whitespace-pre-wrap p-4">
                         {outputLines.length ? (

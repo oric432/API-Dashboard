@@ -13,6 +13,7 @@ dist-ssr
 *.local
 .env
 packge-lock.json
+offline-packages
 
 # Editor directories and files
 .vscode/*
